@@ -93,7 +93,6 @@ def test_FastqParser():
         assert isinstance(sequence[2], str)
         assert sequence[0][0:3] == 'seq'
         assert set(sequence[1]).issubset(goodinputs)
-        #if I can figure it out, check the set of items for sequence 2 [the quality] for expected characters
 
 
 

@@ -19,7 +19,6 @@ classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
 dependencies = [
     "pytest",
-	"python_version >= '3.8'"
 ]
 
 [project.urls]

@@ -11,28 +11,38 @@ def transcribe(seq: str, reverse: bool = False) -> str:
     by replacing all 'T' to 'U') in an input sequence
     """
     myseq = ''
+    goodinputs = {'A','C','G','T','U'}
 
-    if reverse:
-        reverse_transcribe(seq)
+    if set(seq).issubset(goodinputs):
+        if reverse:
+            return reverse_transcribe(seq)
 
+        else:
+            for _, char in enumerate(seq):
+                mychar = TRANSCRIPTION_MAPPING[char]
+                myseq += mychar
+            return myseq
     else:
-        for _, char in enumerate(seq):
-            mychar = TRANSCRIPTION_MAPPING[char]
-            myseq += mychar
-        return myseq
-
-
-print(transcribe('ACTGAACCC'))
+        raise ValueError("This sequence contains characters that are not acceptable nucleotides")
+        
 
 def reverse_transcribe(seq: str) -> str:
     """
     Write a function that will transcribe an input sequence and reverse
     the sequence
     """
-    # Hey this is my comment
-    # Again!
-    fwrd = transcribe(seq, False)
-    return fwrd[::-1]
+
+    goodinputs = {'A','C','G','T','U'}
+
+    if set(seq).issubset(goodinputs):
+        fwrd = transcribe(seq, False)
+        return fwrd[::-1]
+    else:
+        raise ValueError("This sequence contains characters that are not acceptable nucleotides")
 
 
 print(reverse_transcribe('ACTGAACCC'))
+
+print(reverse_transcribe(''))
+
+print(transcribe('ACTGAACCC', True))
